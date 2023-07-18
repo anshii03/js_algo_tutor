@@ -19,25 +19,71 @@
       header.innerHTML = "Hello World using Javascript!!!";
       root.appendChild(header);
     </script>
-
-    <script
-      crossorigin
-      src="https://unpkg.com/react@18/umd/react.development.js"
-    ></script>
-    <script
-      crossorigin
-      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
-    ></script>
-
     <script>
+      /**
+       *
+       * <div id="parent">
+       *    <div id="child1">
+       *        <h1>Hello world using React Child </h1>
+       *    </div>
+       *
+       *    <div id="child2">
+       *        <h1>Hello world using React Child2 </h1>
+       *    </div>
+       *
+       * </div>
+       *
+       */
+
       const headerReact = React.createElement(
         "h1",
         {},
-        "Hello World using React!!!"
+        "Hello World using React Child"
       );
+
+      const headerReact2 = React.createElement(
+        "h1",
+        {},
+        "Hello World using React Child2"
+      );
+
+      const childDiv1 = React.createElement(
+        "div",
+        { id: "child1" },
+        headerReact
+      );
+
+      console.log("child div", childDiv1);
+
+      // React Elements ------> JS Object
+
+      const childDiv2 = React.createElement(
+        "div",
+        { id: "child2" },
+        headerReact2
+      );
+
+      const parentDiv = React.createElement("div", { id: "parent" }, [
+        childDiv1,
+        childDiv2,
+      ]);
+
       const rootReact = ReactDOM.createRoot(document.getElementById("root"));
 
-      rootReact.render(headerReact);
+      rootReact.render(parentDiv);
+
+      //
+      // const element = (
+      // <div id="parent">
+      // <div id="child1">
+      // <h1>Hello world using React Child </h1>
+      // </div>
+      //
+      // <div id="child2">
+      // <h1>Hello world using React Child2 </h1>
+      // </div>
+      // </div>
+      // );
     </script>
   </body>
 </html>
